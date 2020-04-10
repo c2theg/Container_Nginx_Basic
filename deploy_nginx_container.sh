@@ -37,7 +37,7 @@ wget https://raw.githubusercontent.com/c2theg/srvBuilds/master/configs/nginx_glo
 wget https://raw.githubusercontent.com/c2theg/srvBuilds/master/configs/nginx_global_filetypes.conf
 wget https://raw.githubusercontent.com/c2theg/srvBuilds/master/configs/nginx_global_logging.conf
 
-wget https://raw.githubusercontent.com/c2theg/Container_Nginx_Basic/master/site_80443_container.conf
+wget https://raw.githubusercontent.com/c2theg/Container_Nginx_Basic/master/site1_80443_container.conf
 
 #-- Certs ---
 cd /media/data/containers/webserver/certs/
