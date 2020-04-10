@@ -1,0 +1,22 @@
+version: '3'
+services:
+  nginx: 
+    image: nginx:latest
+    container_name: production_nginx
+    volumes:
+        # Default path: /usr/share/nginx/html/
+        - /media/data/containers/webserver/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+        - /media/data/containers/webserver/conf/nginx_global_filetypes.conf:/etc/nginx/snippets/nginx_global_filetypes.conf:ro
+        - /media/data/containers/webserver/conf/nginx_global_logging.conf:/etc/nginx/snippets/nginx_global_logging.conf:ro
+        - /media/data/containers/webserver/conf/nginx_global_tls.conf:/etc/nginx/snippets/nginx_global_tls.conf:ro
+        - /media/data/containers/webserver/conf/nginx_global_security.conf:/etc/nginx/snippets/nginx_global_security.conf:ro
+        - /media/data/containers/webserver/certs/:/etc/nginx/certs/:ro
+        - /var/log/nginx/:/var/log/nginx/
+        - /media/data/containers/webserver/content/custom_404.html:/usr/share/nginx/html/custom_404.html
+        - /media/data/containers/webserver/content/custom_50x.html:/usr/share/nginx/html/custom_50x.html
+        #----------- Site specific settings bellow -----------
+        - /media/data/containers/webserver/conf/site_80443_container.conf:/etc/nginx/sites-enabled/site_80443_container.conf:ro
+        - /media/data/containers/webserver/site_data/:/code:ro
+    ports:
+      - 80:80
+      - 443:443
