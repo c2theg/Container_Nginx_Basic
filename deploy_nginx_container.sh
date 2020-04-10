@@ -11,10 +11,13 @@ Created By:
 |_____|_|_|_| |_|___|_| |___|  _|_|_|___|_|    |_|_|_|_____|  |_____|_| |__,|_  |
                             |_|                                             |___|
 \r\n \r\n
-Version:  0.0.1                             \r\n
+Version:  0.0.2                             \r\n
 Last Updated:  4/9/2020
 \r\n \r\n"
 wait
+# Starting Point!
+# wget https://raw.githubusercontent.com/c2theg/Container_Nginx_Basic/master/deploy_nginx_container.sh && chmod u+x deploy_nginx_container.sh && ./deploy_nginx_container.sh
+
 #---------- Download config files ----------------
 wget https://raw.githubusercontent.com/c2theg/Container_Nginx_Basic/master/docker-compose.yml
 
