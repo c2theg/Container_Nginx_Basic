@@ -16,7 +16,7 @@ Last Updated:  4/9/2020
 \r\n \r\n"
 wait
 #---------- Download config files ----------------
-docker pull nginx:latest
+wget https://raw.githubusercontent.com/c2theg/Container_Nginx_Basic/master/docker-compose.yml
 
 
 #-- Create Directories --
@@ -34,21 +34,31 @@ wget https://raw.githubusercontent.com/c2theg/srvBuilds/master/configs/nginx_glo
 wget https://raw.githubusercontent.com/c2theg/srvBuilds/master/configs/nginx_global_filetypes.conf
 wget https://raw.githubusercontent.com/c2theg/srvBuilds/master/configs/nginx_global_logging.conf
 
+wget https://raw.githubusercontent.com/c2theg/Container_Nginx_Basic/master/site_80443_container.conf
 
+#-- Certs ---
 cd /media/data/containers/webserver/certs/
 wget -O lets-encrypt-x3-cross-signed.pem "https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem"
 
-
+#-- Extra Content ---
 cd /media/data/containers/webserver/content/
 wget -O "custom_404.html" "https://raw.githubusercontent.com/c2theg/srvBuilds/master/configs/custom_404.html"
 wget -O "custom_50x.html" "https://raw.githubusercontent.com/c2theg/srvBuilds/master/configs/custom_50x.html"
 
 
-# PUT YOU WEBSITE IN HERE!!!
+#--- PUT YOU WEBSITE IN HERE!!! ---
 cd /media/data/containers/webserver/site_data/
 wget -O "index.html" "https://raw.githubusercontent.com/c2theg/srvBuilds/master/configs/index.html"
 wget -O "nginx.png" "https://raw.githubusercontent.com/c2theg/srvBuilds/master/configs/nginx.png"
 wget -O "f5-logo-tagline-right-solid-rgb-1.png" "https://raw.githubusercontent.com/c2theg/srvBuilds/master/configs/f5-logo-tagline-right-solid-rgb-1.png"
 
+
+#--- Install Docker ----
+wget https://raw.githubusercontent.com/c2theg/srvBuilds/master/install_docker.sh && chmod u+x install_docker.sh && ./install_docker.sh
+
+#--- Download container ---
+docker pull nginx:latest
 #--- Start Container ---
 docker-compose up
+
+docker ps
